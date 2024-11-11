@@ -1,5 +1,5 @@
-# META NFT
-Meta NFT is a a simple solidity smart contract that bridges NFT from the Ethereum Sepolia testnet to Polygon Amoy testnet. 
+# POLYGON NFT
+Polygon NFTis a a simple solidity smart contract that bridges NFT from the Ethereum Sepolia testnet to Polygon Amoy testnet. 
 
 ## Description
 This smart contract deploys an NFT smart contract on the Ethereum chain, mints the NFT to an address, and then approves and transfers the NFT to the Polygon chain.
@@ -11,20 +11,20 @@ pragma solidity ^0.8.20;
 
 import "erc721a/contracts/ERC721A.sol";
 
-contract MetaNFT is ERC721A {
+contract PolygonNFT is ERC721A {
 
-    constructor() ERC721A("MetaNFT", "MNFT") {}
+    constructor() ERC721A("PolygonNFT", "MNFT") {}
 
     function safeMint(uint8 _quantity) external payable {
         _safeMint(msg.sender, _quantity);
     }
 
     function _baseURI() internal pure override returns (string memory) {
-        return "https://ipfs.io/ipfs/QmQVQCaW65eFaHJ68hZbqnRF4xz5ifi4KF1qWEqVn5RNgB/1.png";
+        return "https://ipfs.io/ipfs/QmQVQCaW65eFaHJ68hZbqnRF4xz5ifi4KF1qWEqVn5RNgB/";
     }
 
     function promptDescription() external pure returns (string memory) {
-        return "This is a set of cute but powerful ninja cats";
+        return "This is the prompt description";
     }
 
     function balanceOf(address owner) public view override returns (uint256) {
@@ -40,7 +40,7 @@ contract MetaNFT is ERC721A {
 - ```fxRootContract.deposit()```: This function is not part of my smart contract functions, but this is the function that does all the magic. The fxRootContract is the bridge contract and in it is the deposit function that does all the transfer from Ethereum Sepolia testnet to Polygon Amoy testnet.
 
 ## Getting Started
-```git clone https://github.com/devfola/Meta-Polygon-POS.git``` to clone the project. 
+```git clone https://https://github.com/devshola/Polygon-NFT-Bridge.git``` to clone the project. 
 After cloning the project on Github, do the following to get the code running on your computer.
 
 - Inside the project directory, in the terminal type: ```npm i``` to install all the necessary dependencies
@@ -52,12 +52,13 @@ After cloning the project on Github, do the following to get the code running on
 - It will take about 20-30minutes before the transaction reflects on Polygon.
 - After about 20-30minutes and the transaction has reflected, copy the amoy contract address, paste it in the ```getBalance.js``` file where you have...
  ```javascript
-  const contractOnAmoy = "0x44F8f3b7b5F49cBEaDc517cd1a7a67b3EF607328";
+  const contractOnAmoy = "0x5F9618D443c6303b471DE0dceDc0cF2EFf17635D";
   ```
 - Once that is done, check the balance on Polygon by running this command ```npx hardhat run scripts/metaNFT/getBalance.js --network amoy```
 
 ## Authors
-Peter Fatukasi
+Samuel Shola
+
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
